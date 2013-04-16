@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:gCal="http://schemas.google.com/gCal/2005" xmlns:openSearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:gd="http://schemas.google.com/g/2005" gd:etag="W/&quot;CU4CQn47eCp7JGA9WhBXGUg.&quot;" gd:kind="calendar#eventFeed">
+  <id>http://www.google.com/calendar/feeds/bobert%40example.com/private/full</id>
+  <updated>2013-04-03T01:52:43.000Z</updated>
+  <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+  <title>bobert@example.com</title>
+  <subtitle>bobert@example.com</subtitle>
+  <link rel="alternate" type="text/html" href="https://www.google.com/calendar/embed?src=bobert%40example.com"/>
+  <link rel="http://schemas.google.com/g/2005#feed" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full?xoauth_requestor_id=bobert@example.com"/>
+  <link rel="http://schemas.google.com/g/2005#batch" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/batch?xoauth_requestor_id=bobert@example.com"/>
+  <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full?max-results=25&amp;start-min=2013-03-31T17%3A00%3A00&amp;singleevents=true&amp;start-max=2013-04-07T17%3A00%3A00&amp;sortorder=a&amp;orderby=starttime&amp;xoauth_requestor_id=bobert@example.com"/>
+  <author>
+    <name>Bobert Jones</name>
+    <email>bobert@example.com</email>
+  </author>
+  <generator version="1.0" uri="http://www.google.com/calendar">Google Calendar</generator>
+  <openSearch:totalResults>10</openSearch:totalResults>
+  <openSearch:startIndex>1</openSearch:startIndex>
+  <openSearch:itemsPerPage>25</openSearch:itemsPerPage>
+  <gCal:timezone value="America/Los_Angeles"/>
+  <gCal:timesCleaned value="0"/>
+  <entry gd:etag="&quot;GUQLQwVIfip7JGA6WhJa&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/n9ommrehhjm5dc6q89ofkm3f8g</id>
+    <published>2013-03-25T16:49:48.000Z</published>
+    <updated>2013-03-25T17:03:10.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>MomCorp</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=bjlvbW1yZWhoam01ZGM2cTg5b2ZrbTNmOGcga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/n9ommrehhjm5dc6q89ofkm3f8g?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString=""/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="fry@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Philip Fry">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:when endTime="2013-04-01T11:00:00.000-07:00" startTime="2013-04-01T10:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="n9ommrehhjm5dc6q89ofkm3f8g@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;EEgITgRIdip7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/b2if8georrqg4ie9p04t3jdvd0_20130401T233000Z</id>
+    <published>2013-03-04T16:52:10.000Z</published>
+    <updated>2013-04-01T19:51:38.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Weekly Sync</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=YjJpZjhnZW9ycnFnNGllOXAwNHQzamR2ZDBfMjAxMzA0MDFUMjMzMDAwWiBrYWlAZGlzdGlsbC5jYw" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/b2if8georrqg4ie9p04t3jdvd0_20130401T233000Z?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString=""/>
+    <gd:originalEvent href="http://www.google.com/calendar/feeds/bobert%40example.com/private/full/b2if8georrqg4ie9p04t3jdvd0" id="b2if8georrqg4ie9p04t3jdvd0">
+      <gd:when startTime="2013-04-01T16:30:00.000-07:00"/>
+    </gd:originalEvent>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="fry@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Philip Fry">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="leela@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Turanga Leela">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="bender@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Bender Rodriguez">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.invited"/>
+    </gd:who>
+    <gd:who email="farnsworth@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Hubert Farnsworth">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="zoidberg@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="John Zoidberg">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.invited"/>
+    </gd:who>
+    <gd:when endTime="2013-04-01T13:00:00.000-07:00" startTime="2013-04-01T12:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="true"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="1"/>
+    <gCal:uid value="b2if8georrqg4ie9p04t3jdvd0@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;EE8IQQdHfyp7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/8ac5lhpq27gockkrh8ncsjbrq8</id>
+    <published>2013-03-29T00:33:26.000Z</published>
+    <updated>2013-03-29T07:46:01.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Mars University</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=OGFjNWxocHEyN2dvY2trcmg4bmNzamJycTgga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/8ac5lhpq27gockkrh8ncsjbrq8?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString=""/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="fry@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Philip Fry">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:when endTime="2013-04-01T15:00:00.000-07:00" startTime="2013-04-01T14:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="8ac5lhpq27gockkrh8ncsjbrq8@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;GU4DTgRGdyp7JGA6WhJa&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/_6t332c2464ojeb9m6p23gb9k8krjcb9o6ko3iba668q38cpm64s46ga68c</id>
+    <published>2013-03-19T17:57:11.000Z</published>
+    <updated>2013-03-19T17:57:59.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Block for strategy session</title>
+    <content>Palo Alto</content>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=XzZ0MzMyYzI0NjRvamViOW02cDIzZ2I5azhrcmpjYjlvNmtvM2liYTY2OHEzOGNwbTY0czQ2Z2E2OGMga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/_6t332c2464ojeb9m6p23gb9k8krjcb9o6ko3iba668q38cpm64s46ga68c?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString="530 Lytton Ave Suite 305 Palo Alto"/>
+    <gd:who email="amy@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Amy Wong">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.invited"/>
+    </gd:who>
+    <gd:who email="bender@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Bender Rodriguez">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.invited"/>
+    </gd:who>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="hermes@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="hermes@examle.com"/>
+    <gd:when endTime="2013-04-02T12:30:00.000-07:00" startTime="2013-04-02T11:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="false"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:privateCopy value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="7F10D117-66D8-4E76-8509-F2443618CAFC"/>
+  </entry>
+  <entry gd:etag="&quot;EEsLTg1Fdyp7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/c55b0pe0odp94803fgv803c22c</id>
+    <published>2013-04-02T21:05:49.000Z</published>
+    <updated>2013-04-02T21:05:49.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>D.O.O.P.</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=YzU1YjBwZTBvZHA5NDgwM2ZndjgwM2MyMmMga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/c55b0pe0odp94803fgv803c22c?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString=""/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="bobert@example.com"/>
+    <gd:when endTime="2013-04-02T15:00:00.000-07:00" startTime="2013-04-02T14:30:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="c55b0pe0odp94803fgv803c22c@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;EEgJQQFJeCp7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/d0fq0gul9ml5t7i6oeiii37ql4</id>
+    <published>2013-04-01T21:53:55.000Z</published>
+    <updated>2013-04-01T21:56:26.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Head Museum</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=ZDBmcTBndWw5bWw1dDdpNm9laWlpMzdxbDQga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/d0fq0gul9ml5t7i6oeiii37ql4?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString=""/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="fry@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Philip Fry">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:when endTime="2013-04-03T14:00:00.000-07:00" startTime="2013-04-03T13:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="d0fq0gul9ml5t7i6oeiii37ql4@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;EEgJQQJIeCp7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/m0g74buir5cj3004qc0l393lto</id>
+    <published>2013-03-14T23:12:43.000Z</published>
+    <updated>2013-04-01T21:58:16.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Omicron Persei 8</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=bTBnNzRidWlyNWNqMzAwNHFjMGwzOTNsdG8ga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/m0g74buir5cj3004qc0l393lto?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString="Planet Omicron Persei 8 "/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="fry@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Philip Fry">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:when endTime="2013-04-03T16:00:00.000-07:00" startTime="2013-04-03T15:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="1"/>
+    <gCal:uid value="m0g74buir5cj3004qc0l393lto@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;GU4LRABJfCp7JGA6WhJa&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6so32ghp8h33egi568pk6h9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h23cc2388ojida36t2jgg9k610k6ga48p2j6cho6grkcdhm84qg</id>
+    <published>2013-03-18T16:57:14.000Z</published>
+    <updated>2013-03-18T18:11:22.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Meeting with Lrrr</title>
+    <content>password: example</content>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=XzYwcTMwYzFnNjBvMzBlMWk2MG80YWMxZzYwcmo4Z3BsODhyajJjMWg4NHMzNGg5ZzYwczMwYzFnNjBvMzBjMWc2c28zMmdocDhoMzNlZ2k1NjhwazZoOWc2NG8zMGMxZzYwbzMwYzFnNjBvMzBjMWc2MG8zMmMxZzYwbzMwYzFnOGgyM2NjMjM4OG9qaWRhMzZ0MmpnZzlrNjEwazZnYTQ4cDJqNmNobzZncmtjZGhtODRxZyBrYWlAZGlzdGlsbC5jYw" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/_60q30c1g60o30e1i60o4ac1g60rj8gpl88rj2c1h84s34h9g60s30c1g60o30c1g6so32ghp8h33egi568pk6h9g64o30c1g60o30c1g60o30c1g60o32c1g60o30c1g8h23cc2388ojida36t2jgg9k610k6ga48p2j6cho6grkcdhm84qg?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString="Omicron Persei 8 "/>
+    <gd:who email="planet.express@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Planet Express">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.invited"/>
+    </gd:who>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.attendee" valueString="Bobert Jones">
+      <gd:attendeeStatus value="http://schemas.google.com/g/2005#event.accepted"/>
+    </gd:who>
+    <gd:who email="zapp@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="Zapp Brannigan"/>
+    <gd:when endTime="2013-04-03T16:00:00.000-07:00" startTime="2013-04-03T15:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="false"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:privateCopy value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="040000008200E00074C5B7101A82E00800000000701B9DF7BE23CE01000000000000000010000000DD60CB195C7E8A40ACADFE32847F66A5"/>
+  </entry>
+  <entry gd:etag="&quot;GE4CRgFGeip7JGA6WhJa&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/qhehinrhaaqi7lsc1p8ukn1k1k</id>
+    <published>2013-03-07T23:19:14.000Z</published>
+    <updated>2013-03-07T23:19:34.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>Alumni Event</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=cWhlaGlucmhhYXFpN2xzYzFwOHVrbjFrMWsga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/qhehinrhaaqi7lsc1p8ukn1k1k?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString="Mars University"/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="bobert@example.com"/>
+    <gd:when endTime="2013-04-04T19:00:00.000-07:00" startTime="2013-04-04T18:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="qhehinrhaaqi7lsc1p8ukn1k1k@google.com"/>
+  </entry>
+  <entry gd:etag="&quot;EEsITwBGeSp7JGA6WhNT&quot;" gd:kind="calendar#event">
+    <id>http://www.google.com/calendar/feeds/bobert%40example.com/events/bqup9tohkrmo7685ks63jrkokc</id>
+    <published>2013-04-02T23:26:58.000Z</published>
+    <updated>2013-04-02T23:27:57.000Z</updated>
+    <category scheme="http://schemas.google.com/g/2005#kind" term="http://schemas.google.com/g/2005#event"/>
+    <title>The Donbot</title>
+    <content/>
+    <link rel="alternate" type="text/html" href="https://www.google.com/calendar/event?eid=YnF1cDl0b2hrcm1vNzY4NWtzNjNqcmtva2Mga2FpQGRpc3RpbGwuY2M" title="alternate"/>
+    <link rel="self" type="application/atom+xml" href="https://www.google.com/calendar/feeds/bobert%40example.com/private/full/bqup9tohkrmo7685ks63jrkokc?xoauth_requestor_id=bobert@example.com"/>
+    <author>
+      <name>Bobert Jones</name>
+      <email>bobert@example.com</email>
+    </author>
+    <gd:comments>
+      <gd:feedLink href="https://www.google.com"/>
+    </gd:comments>
+    <gd:eventStatus value="http://schemas.google.com/g/2005#event.confirmed"/>
+    <gd:where valueString="Elzar's"/>
+    <gd:who email="bobert@example.com" rel="http://schemas.google.com/g/2005#event.organizer" valueString="bobert@example.com"/>
+    <gd:when endTime="2013-04-05T11:00:00.000-07:00" startTime="2013-04-05T10:00:00.000-07:00"/>
+    <gd:transparency value="http://schemas.google.com/g/2005#event.opaque"/>
+    <gd:visibility value="http://schemas.google.com/g/2005#event.default"/>
+    <gCal:anyoneCanAddSelf value="false"/>
+    <gCal:guestsCanInviteOthers value="true"/>
+    <gCal:guestsCanModify value="false"/>
+    <gCal:guestsCanSeeGuests value="true"/>
+    <gCal:sequence value="0"/>
+    <gCal:uid value="bqup9tohkrmo7685ks63jrkokc@google.com"/>
+  </entry>
+</feed>
