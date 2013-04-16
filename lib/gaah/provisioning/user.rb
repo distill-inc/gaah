@@ -50,11 +50,11 @@ module Gaah
       end
 
       def marshal_dump
-        [@id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name]
+        [@id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name, @email]
       end
 
       def marshal_load(array)
-        @id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name = array
+        @id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name, @email = array
       end
     end
   end
