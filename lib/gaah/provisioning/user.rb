@@ -48,6 +48,14 @@ module Gaah
           name:        @name,
         }.to_json
       end
+
+      def marshal_dump
+        [@id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name]
+      end
+
+      def marshal_load(array)
+        @id, @suspended, @admin, @title, @user_name, @family_name, @given_name, @name = array
+      end
     end
   end
 end

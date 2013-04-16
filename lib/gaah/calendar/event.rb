@@ -37,6 +37,14 @@ module Gaah
         }.to_json
       end
 
+      def marshal_dump
+        [@id, @published, @updated, @title, @content, @status, @where, @author, @when, @who, @transparency, @visibility]
+      end
+
+      def marshal_load(array)
+        @id, @published, @updated, @title, @content, @status, @where, @author, @when, @who, @transparency, @visibility = array
+      end
+
       private
 
       def store_xml(xml)
