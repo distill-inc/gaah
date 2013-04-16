@@ -6,8 +6,6 @@ module Gaah
       (xml/:entry).map(&method(:new))
     end
 
-    protected
-
     def ==(other)
       @id == other.id
     end
