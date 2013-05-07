@@ -42,6 +42,8 @@ module Gaah
         make_request(method, response['Location'])
       elsif response.is_a? Net::HTTPForbidden
         raise Gaah::HTTPForbidden
+      elsif response.is_a? Net::HTTPUnauthorized
+        raise Gaah::HTTPUnauthorized
       else
         # TODO: error handling
         response
