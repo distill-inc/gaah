@@ -40,6 +40,8 @@ module Gaah
       elsif response.is_a? Net::HTTPFound
         url = response['Location']
         make_request(method, response['Location'])
+      elsif response.is_a? Net::HTTPForbidden
+        raise Gaah::HTTPForbidden
       else
         # TODO: error handling
         response
