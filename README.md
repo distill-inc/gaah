@@ -46,6 +46,6 @@ Warning: Google documentation links sometimes move without good redirection.
 * [Google Apps Provisioning API v2](https://developers.google.com/google-apps/provisioning/)
 
 ### Todo
-* Look into data api v3 when Provisioning API is updated
+* Provisioning API is deprecated, use Directory API
 * Possibly integrate [Google Apps Calendar Resource API](https://developers.google.com/google-apps/calendar-resource/)
 * Error handling
