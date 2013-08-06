@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "nokogiri", "~> 1.5"
   s.add_dependency 'oauth', "~> 0.4"
+  s.add_dependency 'oauth2', "~> 0.9"
   s.add_dependency 'queryparams', "0.0.3"
   s.add_development_dependency "rspec", "~> 2.5"
 end
