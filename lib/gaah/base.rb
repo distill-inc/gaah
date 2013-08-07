@@ -11,6 +11,7 @@ require 'gaah/api_client'
 require 'gaah/api_model'
 require 'gaah/calendar/api'
 require 'gaah/provisioning/api'
+require 'gaah/resource/api'
 require 'gaah/exceptions'
 
 module Gaah
