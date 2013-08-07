@@ -33,7 +33,15 @@ events = user.events(xoauth_requestor_id)
 event = events.first
 event.title           # "Meeting with Joe"
 event.when.start_time # 2013-04-16 13:00:00 -0400
+
+# Get calendar resources *
+rooms = Gaah::Resource::Api.resources
+room = rooms.first
+room.name # "U.S.S. Distill"
+room.type # "Conference room"
 ```
+
+* This API requires [admin API access found here](https://admin.google.com/AdminHome#SecuritySettings:flyout=apimanagement).
 
 ### Resources
 
@@ -44,8 +52,8 @@ Warning: Google documentation links sometimes move without good redirection.
 * [Google Apps Administrative APIs](https://developers.google.com/google-apps/admin-apis)
 * [Google Calendar API v2](https://developers.google.com/google-apps/calendar/v2/developers_guide_protocol)
 * [Google Apps Provisioning API v2](https://developers.google.com/google-apps/provisioning/)
+* [Google Apps Calendar Resource API](https://developers.google.com/admin-sdk/calendar-resource/)
 
 ### Todo
 * Provisioning API is deprecated, use Directory API
-* Possibly integrate [Google Apps Calendar Resource API](https://developers.google.com/google-apps/calendar-resource/)
 * Error handling
