@@ -14,7 +14,7 @@ module Gaah
           url    = "https://apps-apis.google.com/a/feeds/calendar/resource/2.0/#{Gaah.domain}"
           xml    = ApiClient.instance.get(url)
           parsed = Nokogiri::XML(xml)
-          
+
           current_list = Resource.batch_create(parsed/:entry)
           next_link    = (parsed/'link[rel=next]').first
 
