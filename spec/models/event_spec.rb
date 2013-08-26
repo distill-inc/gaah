@@ -3,97 +3,90 @@ include Gaah::Calendar
 
 describe Event do
   let(:xml)    { fixture('calendar.xml') }
-  let(:events) { Nokogiri::XML(xml)/:entry }
+  let(:json)   { fixture('calendar.json') }
+  #let(:events) { Nokogiri::XML(xml)/:entry }
+  let(:events) { JSON.load(json)['items'] }
   let(:event)  { Event.new(events.first) }
 
   describe '#initialize' do
+    subject { event }
     it 'parses ID' do
-      event.id.should == 'http://www.google.com/calendar/feeds/bobert%40example.com/events/n9ommrehhjm5dc6q89ofkm3f8g'
-    end
-
-    it 'parses published time' do
-      event.published.should == Time.parse('2013-03-25T16:49:48.000Z')
+      subject.id.should == 'one'
     end
 
     it 'parses updated time' do
-      event.updated.should == Time.parse('2013-03-25T17:03:10.000Z')
+      subject.updated.should == Time.parse('2012-12-13 22:00:00 UTC')
     end
 
-    it 'parses title' do
-      event.title.should == 'MomCorp'
+    it 'parses summary' do
+      subject.summary.should == 'Holiday Dinner'
     end
 
-    it 'parses content' do
-      event.content.should == ''
+    it 'parses description' do
+      subject.description.should == 'Holiday party time!'
     end
 
-    it 'parses status' do
-      event.status.should == 'confirmed'
-    end
+    describe :attendees do
+      let(:subject) { event.attendees }
 
-    describe :who do
-      let(:who) { event.who }
+      it 'parses all attendees' do
+        subject.length.should == 3
+      end
 
-      it 'parses who' do
-        who.length.should == 2
-        who.first.should be_an_instance_of(Gaah::Calendar::Who)
+      it 'parses Who object' do
+        subject.first.should be_an_instance_of(Gaah::Calendar::Who)
       end
 
       it 'parses name' do
-        who.first.name.should == 'Bobert Jones'
+        subject.first.name.should == "Bob-Bob O'Bob"
       end
 
       it 'parses email' do
-        who.first.email.should == 'bobert@example.com'
+        subject.first.email.should == 'bob@example.com'
       end
     end
 
     describe :when do
-      let(:_when) { event.when }
+      let(:subject) { event.when }
 
-      it 'parses when' do
-        _when.should be_an_instance_of(When)
-      end
+      it { should be_an_instance_of(When) }
 
       it 'parses start_time' do
-        _when.start_time.should == Time.parse('2013-04-01 10:00:00 -0700')
+        subject.start_time.should == Time.parse('2012-12-14 18:30:00 -0800')
       end
 
       it 'parses end_time' do
-        _when.end_time.should == Time.parse('2013-04-01 11:00:00 -0700')
+        subject.end_time.should == Time.parse('2012-12-14 21:30:00 -0800')
       end
     end
 
-    it 'parses where' do
-      event.where.should == ''
+    it 'parses location' do
+      subject.location.should == "Prospect, 300 Spear St, San Francisco, CA 94105"
     end
 
     describe :author do
       let(:author) { event.author }
 
       it 'parses email' do
-        author.email.should == "bobert@example.com"
+        author.email.should == "alice@example.com"
       end
 
       it 'parses name' do
-        author.name.should == "Bobert Jones"
+        author.name.should == "Alice McAlice"
       end
     end
 
     it 'parses transparency' do
-      event.transparency.should == 'opaque'
+      subject.transparency.should == ''
     end
 
     it 'parses visibility' do
-      event.visibility.should == 'default'
+      subject.visibility.should == 'private'
     end
   end
 
   describe '.batch_create' do
-    let(:processed_events) { Event.batch_create(events) }
-
-    it 'parses events' do
-      processed_events.count.should == 10
-    end
+    let(:subject) { Event.batch_create(events) }
+    it { subject.count.should == 3 }
   end
 end

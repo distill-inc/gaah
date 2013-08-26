@@ -1,0 +1,135 @@
+{
+  "kind": "calendar#events",
+  "etag": "\"foo\"",
+  "summary": "_me",
+  "updated": "2013-08-26T22:16:43.629Z",
+  "timeZone": "America/Los_Angeles",
+  "accessRole": "owner",
+  "defaultReminders": [{
+    "method": "popup",
+    "minutes": 10
+  }],
+  "items": [{
+    "kind": "calendar#event",
+    "etag": "\"bar1\"",
+    "id": "one",
+    "status": "confirmed",
+    "htmlLink": "https://www.google.com/calendar/event?eid=one",
+    "created": "2012-12-05T23:51:16.000Z",
+    "updated": "2012-12-13T22:00:00Z",
+    "summary": "Holiday Dinner",
+    "description": "Holiday party time!",
+    "location": "Prospect, 300 Spear St, San Francisco, CA 94105",
+    "creator": {
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice"
+    },
+    "organizer": {
+      "email": "bob@example.com",
+      "displayName": "Bob O'Bob"
+    },
+    "start": {
+      "dateTime": "2012-12-14T18:30:00-08:00"
+    },
+    "end": {
+      "dateTime": "2012-12-14T21:30:00-08:00"
+    },
+    "iCalUID": "foo@google.com",
+    "visibility": "private",
+    "sequence": 0,
+    "attendees": [{
+      "email": "bob@example.com",
+      "displayName": "Bob-Bob O'Bob",
+      "responseStatus": "needsAction"
+    }, {
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice",
+      "organizer": true,
+      "self": true,
+      "responseStatus": "accepted"
+    }, {
+      "email": "chris@example.com",
+      "displayName": "Chris Christiansen",
+      "responseStatus": "accepted"
+    }],
+    "reminders": {
+      "useDefault": true
+    }
+  }, {
+    "kind": "calendar#event",
+    "etag": "\"bar2\"",
+    "id": "dos",
+    "status": "confirmed",
+    "htmlLink": "https://www.google.com/calendar/event?eid=two",
+    "created": "2012-12-18T16:34:06.000Z",
+    "updated": "2012-12-19T19:49:46.817Z",
+    "summary": "Meet for WeWork Walkthrough",
+    "location": "795 Folsom",
+    "creator": {
+      "email": "david@notexample.com"
+    },
+    "organizer": {
+      "email": "david@notexample.com"
+    },
+    "start": {
+      "dateTime": "2012-12-19T10:15:00-08:00"
+    },
+    "end": {
+      "dateTime": "2012-12-19T11:15:00-08:00"
+    },
+    "iCalUID": "bar@google.com",
+    "sequence": 0,
+    "transparency": "transparent",
+    "attendees": [{
+      "email": "bob@example.com",
+      "responseStatus": "accepted"
+    }, {
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice",
+      "self": true,
+      "responseStatus": "declined"
+    }],
+    "reminders": {
+      "useDefault": true
+    }
+  }, {
+    "kind": "calendar#event",
+    "etag": "\"baz\"",
+    "id": "three",
+    "status": "confirmed",
+    "htmlLink": "https://www.google.com/calendar/event?eid=three",
+    "created": "2013-02-11T19:42:44.000Z",
+    "updated": "2013-02-12T00:55:43.590Z",
+    "summary": "Weekly Sync",
+    "creator": {
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice"
+    },
+    "organizer": {
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice"
+    },
+    "start": {
+      "dateTime": "2013-02-11T17:00:00-08:00"
+    },
+    "end": {
+      "dateTime": "2013-02-11T17:30:00-08:00"
+    },
+    "iCalUID": "tres@google.com",
+    "sequence": 0,
+    "attendees": [{
+      "email": "alice@example.com",
+      "displayName": "Alice McAlice",
+      "organizer": true,
+      "responseStatus": "accepted"
+    }, {
+      "email": "bob@example.com",
+      "displayName": "Bob McBob",
+      "self": true,
+      "responseStatus": "needsAction"
+    }],
+    "reminders": {
+      "useDefault": true
+    }
+  }]
+}

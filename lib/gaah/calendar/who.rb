@@ -1,27 +1,10 @@
 module Gaah
   module Calendar
     class Who
-      attr_reader :name, :email, :aliases
-      def initialize(xml)
-        @aliases = []
-
-        case xml.name
-        when 'author'
-          @name  = (xml/:name).inner_text
-          @email = (xml/:email).inner_text
-        when 'who'
-          @name  = xml.attr(:valueString)
-          @email = xml.attr(:email)
-        when 'entry'
-          @name  = (xml/:title).inner_text
-          (xml/'gd|email').each do |gd_email|
-            email = gd_email.attr('address')
-            @aliases << email
-            @email = email if gd_email.attr('primary') == 'true'
-          end
-        else
-          raise "Invalid person record #{xml.name}"
-        end
+      attr_reader :name, :email
+      def initialize(json)
+        @name  = json['displayName'].to_s
+        @email = json['email'].to_s
       end
 
       def catch_all_user?
@@ -30,9 +13,8 @@ module Gaah
 
       def to_json(*args)
         {
-          name:    name,
-          email:   email,
-          aliases: aliases,
+          name:  name,
+          email: email,
         }.to_json
       end
 

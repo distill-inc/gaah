@@ -1,65 +1,68 @@
 module Gaah
   module Calendar
     class Event < Gaah::ApiModel
-      attr_reader :published, :updated, :title, :content, :status, :who, :when, :where, :author, :transparency, :visibility
+      attr_reader :updated, :summary, :description, :attendees, :when, :location, :creator, :transparency, :visibility
 
-      def initialize(xml)
-        store_xml(xml)
+      def initialize(json)
+        store_json(json)
 
-        @id           = inner_text(:id)
-        @published    = Time.parse(inner_text(:published))
-        @updated      = Time.parse(inner_text(:updated))
-        @title        = inner_text(:title)
-        @content      = inner_text(:content)
-        @status       = tag_value('gd|eventStatus')
-        @where        = attr_value('gd|where', 'valueString')
-        @author       = Who.new((@xml/:author).first)
+        @id           = json['id']
+        @updated      = Time.parse(json['updated'])
+        @summary      = json['summary'].to_s
+        @description  = json['description'].to_s
+        @location     = json['location'].to_s
+        @creator      = Who.new(json['creator']) if json['creator']
         @when         = parse_when
-        @who          = parse_who
-        @transparency = tag_value('gd|transparency')
-        @visibility   = tag_value('gd|visibility')
+        @attendees    = parse_attendees
+        @transparency = json['transparency'].to_s
+        @visibility   = json['visibility'] || 'default'
       end
 
       def to_json(*args)
         {
           id:           @id,
-          published:    @published,
           updated:      @updated,
-          title:        @title,
-          content:      @content,
-          status:       @status,
-          where:        @where,
-          author:       @author,
+          summary:      @summary,
+          description:  @description,
+          location:     @location,
+          creator:      @creator,
           when:         @when,
-          who:          @who,
+          attendees:    @attendees,
           transparency: @transparency,
           visibility:   @visibility,
         }.to_json
       end
 
+      # V2 -> V3
+      def author;  creator;     end
+      def content; description; end
+      def title;   summary;     end
+      def where;   location;    end
+      def who;     attendees;   end
+
       def marshal_dump
-        [@id, @published, @updated, @title, @content, @status, @where, @author, @when, @who, @transparency, @visibility]
+        [@id, nil, @updated, @summary, @description, @location, @creator, @when, @attendees, @transparency, @visibility]
       end
 
       def marshal_load(array)
-        @id, @published, @updated, @title, @content, @status, @where, @author, @when, @who, @transparency, @visibility = array
+        @id, _, @updated, @summary, @description, @location, @creator, @when, @attendees, @transparency, @visibility = array
       end
 
       private
 
-      def store_xml(xml)
+      def store_json(json)
         super
-        unless @xml.attr('gd:kind') == "calendar#event"
-          puts "Possible invalid event xml - gd:kind is #{ @xml.attr('gd:kind') }"
+        unless @json['kind'] == "calendar#event"
+          puts "Possible invalid event json - kind is #{ @json['kind'] }"
         end
       end
 
       def parse_when
-        When.new(attr_value('> gd|when', 'startTime'), attr_value('> gd|when', 'endTime'))
+        When.new(@json['start'], @json['end'])
       end
 
-      def parse_who
-        (@xml/'gd|who').map {|attendee| Who.new(attendee) }
+      def parse_attendees
+        (@json['attendees'] || []).map {|attendee| Who.new(attendee) }
       end
     end
   end

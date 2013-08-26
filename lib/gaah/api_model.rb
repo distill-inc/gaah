@@ -3,7 +3,11 @@ module Gaah
     attr_reader :id
 
     def self.batch_create(xml)
-      (xml/:entry).map(&method(:new))
+      if xml.is_a? Array
+        xml.map(&method(:new))
+      else
+        (xml/:entry).map(&method(:new))
+      end
     end
 
     def ==(other)
@@ -11,6 +15,10 @@ module Gaah
     end
 
     private
+
+    def store_json(json)
+      @json = json.is_a?(String) ? JSON.load(json) : json
+    end
 
     def store_xml(xml)
       @xml = xml.is_a?(String) ? Nokogiri::XML(xml) : xml

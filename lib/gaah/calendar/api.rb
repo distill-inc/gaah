@@ -9,15 +9,15 @@ module Gaah
         def events(xoauth_requestor_id, options)
           url    = build_api_url(options[:email])
           params = build_api_params(xoauth_requestor_id, options)
-          xml    = ApiClient.instance.get(url, params)
-          events = Nokogiri::XML(xml)/:entry
-          Event.batch_create(events)
+          json   = ApiClient.instance.get(url, params)
+          events = JSON.load(json)
+          Event.batch_create(events['items'])
         end
 
         private
 
         def build_api_url(email)
-          API_URL.sub('EMAIL', email || 'default')
+          API_URL.sub('CAL_ID', email || 'default')
         end
 
         def build_api_params(xoauth_requestor_id, options)
@@ -34,7 +34,8 @@ module Gaah
           time.nil? ? nil : time.strftime('%Y-%m-%dT17:00:00')
         end
 
-        API_URL = 'https://www.google.com/calendar/feeds/EMAIL/private/full'
+       #API_URL = 'https://www.google.com/calendar/feeds/EMAIL/private/full'
+        API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
       end
     end
   end
