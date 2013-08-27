@@ -21,17 +21,19 @@ module Gaah
         end
 
         def build_api_params(xoauth_requestor_id, options)
-          api_params = { xoauth_requestor_id: xoauth_requestor_id }
-          api_params[:orderby]      = options.delete(:order_by)      || 'starttime'
-          api_params[:singleevents] = options.delete(:single_events) || true
-          api_params[:sortorder]    = options.delete(:sort_order)    || 'a'
-          api_params['start-min']   = stringify(options.delete(:start_min))
-          api_params['start-max']   = stringify(options.delete(:start_max))
+          api_params = {
+            xoauth_requestor_id: xoauth_requestor_id,
+            alwaysIncludeEmail: true,
+          }
+          api_params[:orderBy]      = options.delete(:order_by)      || 'startTime'
+          api_params[:singleEvents] = options.delete(:single_events) || true
+          api_params[:timeMin]      = stringify(options.delete(:time_min))
+          api_params[:timeMax]      = stringify(options.delete(:time_max))
           api_params
         end
 
         def stringify(time)
-          time.nil? ? nil : time.strftime('%Y-%m-%dT17:00:00')
+          time.nil? ? nil : DateTime.parse(time.strftime('%Y-%m-%dT17:00:00')).rfc3339
         end
 
        #API_URL = 'https://www.google.com/calendar/feeds/EMAIL/private/full'
