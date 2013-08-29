@@ -24,22 +24,32 @@ module Gaah
       @token = OAuth::AccessToken.new(oauth_consumer)
     end
 
-    def get(base, query_params={})
-      url = base
-      url = "#{base}?#{QueryParams.encode(query_params)}" if query_params.keys.length > 0
-      make_request(:get, url)
+    def get(base, query_params = {})
+      make_request(:get, base, query_params)
+    end
+
+    def post(base, query_params = {}, body = {})
+      make_request(:post, base, query_params, body)
     end
 
     private
 
-    def make_request(method, url)
-      response = @token.request(method, url, 'GData-Version' => '2.0')
+    def make_request(method, url, params = {}, body = nil)
+      url = "#{url}?#{QueryParams.encode(params)}" if params.keys.length > 0
+      case method
+      when :get
+        response = @token.get(url, 'GData-Version' => '2.0')
+      when :post
+        response = @token.post(url, body.to_json, 'Content-Type' => 'application/json')
+      else
+        response = @token.request(method, url, 'GData-Version' => '2.0')
+      end
 
       if response.is_a? Net::HTTPSuccess
         response.body
       elsif response.is_a? Net::HTTPFound
         url = response['Location']
-        make_request(method, response['Location'])
+        make_request(method, response['Location'], params, body)
       elsif response.is_a? Net::HTTPForbidden
         raise Gaah::HTTPForbidden
       elsif response.is_a? Net::HTTPUnauthorized
