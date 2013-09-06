@@ -54,9 +54,12 @@ module Gaah
         raise Gaah::HTTPForbidden
       elsif response.is_a? Net::HTTPUnauthorized
         raise Gaah::HTTPUnauthorized
-      else
-        # TODO: error handling
+      elsif response.is_a? Net::HTTPBadRequest
+        raise Gaah::HTTPBadRequest
+      elsif response.code.start_with?('2')
         response
+      else
+        raise Gaah::UnknownHTTPException.new(response.code)
       end
     end
   end
