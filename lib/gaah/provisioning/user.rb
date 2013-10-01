@@ -17,19 +17,15 @@ module Gaah
         @user_name   = attr_value('apps|login', 'userName')
         @family_name = attr_value('apps|name', 'familyName')
         @given_name  = attr_value('apps|name', 'givenName')
+        @email     ||= "#{@user_name}@#{Gaah.domain}"
       end
 
       def parse_email
         email_link = (@xml/'gd|feedLink').select { |link|
           link.attr('rel').end_with?('user.emailLists')
         }.first
-        return parse_login if email_link.nil?
+        return nil if email_link.nil?
         CGI::unescape(email_link.attr('href').split('recipient=').last)
-      end
-
-      def parse_login
-        login = attr_value('apps|login', 'userName')
-        "#{login}@#{Gaah.domain}"
       end
 
       def name
