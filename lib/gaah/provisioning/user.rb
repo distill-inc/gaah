@@ -23,8 +23,13 @@ module Gaah
         email_link = (@xml/'gd|feedLink').select { |link|
           link.attr('rel').end_with?('user.emailLists')
         }.first
-        return nil if email_link.nil?
+        return parse_login if email_link.nil?
         CGI::unescape(email_link.attr('href').split('recipient=').last)
+      end
+
+      def parse_login
+        login = attr_value('apps|login', 'userName')
+        "#{login}@#{Gaah.domain}"
       end
 
       def name

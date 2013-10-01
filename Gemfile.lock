@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    gaah (0.1.7)
+    gaah (0.1.9)
       nokogiri (~> 1.5)
       oauth (~> 0.4)
       oauth2 (~> 0.9)
@@ -17,7 +17,7 @@ GEM
     jwt (0.1.8)
       multi_json (>= 1.5)
     mini_portile (0.5.1)
-    multi_json (1.7.8)
+    multi_json (1.8.0)
     multi_xml (0.5.5)
     multipart-post (1.2.0)
     nokogiri (1.6.0)
