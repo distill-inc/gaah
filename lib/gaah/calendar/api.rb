@@ -21,7 +21,8 @@ module Gaah
           params = { xoauth_requestor_id: xoauth_requestor_id }
           body   = build_create_api_body(options)
           json   = ApiClient.instance.post(url, params, body)
-          event  = JSON.load(json)
+
+          JSON.load(json)
         end
 
         # API: Events#get
@@ -31,7 +32,8 @@ module Gaah
           url    = "#{base}/#{id}"
           params = { xoauth_requestor_id: xoauth_requestor_id }
           json   = ApiClient.instance.get(url, params)
-          event  = JSON.load(json)
+
+          JSON.load(json)
         end
 
         private
