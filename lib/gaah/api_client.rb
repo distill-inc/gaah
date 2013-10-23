@@ -28,6 +28,10 @@ module Gaah
       make_request(:get, base, query_params)
     end
 
+    def delete(base, query_params = {})
+      make_request(:delete, base, query_params)
+    end
+
     def post(base, query_params = {}, body = {})
       make_request(:post, base, query_params, body)
     end
@@ -39,6 +43,8 @@ module Gaah
       case method
       when :get
         response = @token.get(url, 'GData-Version' => '2.0')
+      when :delete
+        response = @token.delete(url, 'GData-Version' => '2.0')
       when :post
         response = @token.post(url, body.to_json, 'Content-Type' => 'application/json')
       else

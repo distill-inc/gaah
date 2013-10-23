@@ -33,7 +33,23 @@ module Gaah
           params = { xoauth_requestor_id: xoauth_requestor_id }
           json   = ApiClient.instance.get(url, params)
 
-          JSON.load(json)
+          Gaah::Calendar::Event.new(JSON.load(json))
+        end
+
+        def delete_event(xoauth_requestor_id, options)
+          base   = build_api_url(options.delete(:email))
+          id     = options.delete(:event_id)
+          url    = "#{base}/#{id}"
+          params = { xoauth_requestor_id: xoauth_requestor_id }
+          ApiClient.instance.delete(url, params)
+          { success: true }
+        rescue Gaah::UnknownHTTPException => exception
+          case exception.message
+          when '404'
+            { success: false, error: "Event was not found." }
+          when '410'
+            { success: false, error: "Event is already canceled." }
+          end
         end
 
         private
