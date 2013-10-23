@@ -22,7 +22,7 @@ module Gaah
           body   = build_create_api_body(options)
           json   = ApiClient.instance.post(url, params, body)
 
-          JSON.load(json)
+          Gaah::Calendar::Event.new(JSON.load(json))
         end
 
         # API: Events#get

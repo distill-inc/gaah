@@ -1,12 +1,13 @@
 module Gaah
   module Calendar
     class Event < Gaah::ApiModel
-      attr_reader :updated, :summary, :description, :attendees, :when, :location, :creator, :transparency, :visibility
+      attr_reader :updated, :summary, :description, :attendees, :when, :location, :creator, :transparency, :visibility, :ical_uid, :organizer, :sequence, :status
 
       def initialize(json)
         store_json(json)
 
         @id           = json['id']
+        @ical_uid     = json['iCalUID']
         @updated      = Time.parse(json['updated'])
         @summary      = json['summary'].to_s
         @description  = json['description'].to_s
@@ -16,6 +17,9 @@ module Gaah
         @attendees    = parse_attendees
         @transparency = json['transparency'].to_s
         @visibility   = json['visibility'] || 'default'
+        @organizer    = Who.new(json['organizer'])
+        @sequence     = json['sequence']
+        @status       = json['status']
       end
 
       def to_json(*args)
@@ -30,6 +34,7 @@ module Gaah
           attendees:    @attendees,
           transparency: @transparency,
           visibility:   @visibility,
+          status:       @status,
         }.to_json
       end
 
@@ -41,11 +46,15 @@ module Gaah
       def who;     attendees;   end
 
       def marshal_dump
-        [@id, nil, @updated, @summary, @description, @location, @creator, @when, @attendees, @transparency, @visibility]
+        [@id, nil, @updated, @summary, @description, @location, @creator, @when,
+         @attendees, @transparency, @visibility, @ical_uid, @organizer,
+         @sequence, @status]
       end
 
       def marshal_load(array)
-        @id, _, @updated, @summary, @description, @location, @creator, @when, @attendees, @transparency, @visibility = array
+        @id, _, @updated, @summary, @description, @location, @creator, @when,
+          @attendees, @transparency, @visibility, @ical_uid, @organizer,
+          @sequence, @status = array
       end
 
       private
