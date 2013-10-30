@@ -38,6 +38,10 @@ module Gaah
         }.to_json
       end
 
+      def resources
+        who.select(&:is_resource?)
+      end
+
       # V2 -> V3
       def author;  creator;     end
       def content; description; end
