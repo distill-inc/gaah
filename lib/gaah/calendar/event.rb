@@ -20,6 +20,7 @@ module Gaah
         @organizer    = Who.new(json['organizer'])
         @sequence     = json['sequence']
         @status       = json['status']
+        @url          = json['htmlLink']
       end
 
       def to_json(*args)
@@ -35,6 +36,8 @@ module Gaah
           transparency: @transparency,
           visibility:   @visibility,
           status:       @status,
+          url:          @url,
+          resources:    resources,
         }.to_json
       end
 
@@ -52,13 +55,13 @@ module Gaah
       def marshal_dump
         [@id, nil, @updated, @summary, @description, @location, @creator, @when,
          @attendees, @transparency, @visibility, @ical_uid, @organizer,
-         @sequence, @status]
+         @sequence, @status, @url]
       end
 
       def marshal_load(array)
         @id, _, @updated, @summary, @description, @location, @creator, @when,
           @attendees, @transparency, @visibility, @ical_uid, @organizer,
-          @sequence, @status = array
+          @sequence, @status, @url = array
       end
 
       private
