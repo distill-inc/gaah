@@ -1,7 +1,7 @@
 module Gaah
   module Calendar
     class Event < Gaah::ApiModel
-      attr_reader :updated, :summary, :description, :attendees, :when, :location, :creator, :transparency, :visibility, :ical_uid, :organizer, :sequence, :status
+      attr_reader :updated, :summary, :description, :attendees, :when, :location, :creator, :transparency, :visibility, :ical_uid, :organizer, :sequence, :status, :url
 
       def initialize(json)
         store_json(json)
