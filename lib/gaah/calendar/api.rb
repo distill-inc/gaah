@@ -1,3 +1,4 @@
+require 'gaah/calendar/calendar'
 require 'gaah/calendar/event'
 require 'gaah/calendar/when'
 require 'gaah/calendar/who'
@@ -6,6 +7,18 @@ module Gaah
   module Calendar
     class Api
       class << self
+        # API: CalendarList: list
+        def calendars(xoauth_requestor_id, options = {})
+          url = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
+          params = {
+            xoauth_requestor_id: xoauth_requestor_id,
+            minAccessRole:       options[:min_access_role] || 'writer',
+            showHidden:          options[:show_hidden]     || false,
+          }
+          calendars = JSON.load(ApiClient.instance.get(url, params))
+          Calendar.batch_create(calendars['items'])
+        end
+
         # API: Events#list
         def events(xoauth_requestor_id, options)
           url    = build_api_url(options[:email])
