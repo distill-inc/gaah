@@ -5,13 +5,13 @@ module Gaah
     class Api
       class << self
         def resources
-          fetch_resources("https://apps-apis.google.com/a/feeds/#{Gaah.domain}/user/2.0")
+          url = "https://apps-apis.google.com/a/feeds/calendar/resource/2.0/#{Gaah.domain}"
+          fetch_resources(url)
         end
 
         private
 
         def fetch_resources(url)
-          url    = "https://apps-apis.google.com/a/feeds/calendar/resource/2.0/#{Gaah.domain}"
           xml    = ApiClient.instance.get(url)
           parsed = Nokogiri::XML(xml)
 
