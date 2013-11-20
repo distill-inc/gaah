@@ -9,6 +9,9 @@ module Gaah
         @id          = json['id']
         @summary     = json['summary']
         @description = json['description']
+        @hidden      = json['hidden']
+        @selected    = json['selected']
+        @primary     = json['primary']
         @time_zone   = json['timeZone']
         @color_id    = json['colorId']
         @bg_color    = json['backgroundColor']
@@ -22,6 +25,9 @@ module Gaah
           id:          @id,
           summary:     @summary,
           description: @description,
+          hidden:      @hidden,
+          selected:    @selected,
+          primary:     @primary,
           time_zone:   @time_zone,
           color_id:    @color_id,
           bg_color:    @bg_color,
@@ -32,11 +38,11 @@ module Gaah
       end
 
       def marshal_dump
-        [@id, @summary, @description, @time_zone, @color_id, @bg_color, @fg_color, @selected, @access_role]
+        [@id, @summary, @description, @hidden, @selected, @primary, @time_zone, @color_id, @bg_color, @fg_color, @selected, @access_role]
       end
 
       def marshal_load(array)
-        @id, @summary, @description, @time_zone, @color_id, @bg_color, @fg_color, @selected, @access_role = array
+        @id, @summary, @description, @hidden, @selected, @primary, @time_zone, @color_id, @bg_color, @fg_color, @selected, @access_role = array
       end
     end
   end
