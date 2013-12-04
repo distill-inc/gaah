@@ -4,7 +4,13 @@ module Gaah
 
     def self.batch_create(xml)
       if xml.is_a? Array
-        xml.map(&method(:new))
+        xml.map do |item|
+          begin
+            self.new(item)
+          rescue
+            raise ApiParsingException.new(item)
+          end
+        end
       else
         (xml/:entry).map(&method(:new))
       end

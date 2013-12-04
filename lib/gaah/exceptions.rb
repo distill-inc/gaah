@@ -21,4 +21,5 @@ module Gaah
   end
 
   class UnknownHTTPException < StandardError;end
+  class ApiParsingException < StandardError; end
 end
