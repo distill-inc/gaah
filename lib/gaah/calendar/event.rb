@@ -17,7 +17,7 @@ module Gaah
         @attendees    = parse_attendees
         @transparency = json['transparency'].to_s
         @visibility   = json['visibility'] || 'default'
-        @organizer    = Who.new(json['organizer'])
+        @organizer    = Who.new(json['organizer']) if json['organizer']
         @sequence     = json['sequence']
         @status       = json['status']
         @url          = json['htmlLink']
