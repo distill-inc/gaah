@@ -15,7 +15,7 @@ module Gaah
 
         private
 
-        def fetch_users(oauth_client, url, params)
+        def fetch_users(oauth_client, url, params, retry_interval = 0)
           json   = ApiClient.new(oauth_client.access_token).get(url, params)
           parsed = JSON.load(json)
 
@@ -28,8 +28,10 @@ module Gaah
             params['pageToken']=next_page_token
             current_users + fetch_users(oauth_client, url, params)
           end
-        rescue Gaah::HTTPUnauthorized => e
-          retry if oauth_client.refresh_access_token!
+        rescue Gaah::HTTPUnauthorized => e  
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
       end
     end
