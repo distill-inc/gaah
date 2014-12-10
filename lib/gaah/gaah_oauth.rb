@@ -4,8 +4,9 @@ require 'gaah/exceptions'
 module Gaah
   class OAuth
     
-    OAUTH2_SCOPES=['https://apps-apis.google.com/a/feeds/calendar/resource/',     #access to calendars
-                 # 'https://www.googleapis.com/auth/calendar.readonly',            #access to calendars read only
+    OAUTH2_SCOPES=['https://apps-apis.google.com/a/feeds/calendar/resource/',     #access to calendars feed
+                  'https://www.googleapis.com/auth/calendar',                     #access to calendars
+                  'https://www.googleapis.com/auth/calendar.readonly',            #access to calendars read only
                   'https://www.googleapis.com/auth/admin.directory.user',         #access to users
                   'https://www.googleapis.com/auth/admin.directory.user.readonly'] #access to users read only
                   
