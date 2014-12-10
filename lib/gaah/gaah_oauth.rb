@@ -35,7 +35,7 @@ module Gaah
       )
       
       if options && !options.empty?
-        %w(code expiry refresh_token access_token id_token state expires_in).each do |field|
+        %w(code expiry refresh_token access_token id_token state expires_in expires_at).each do |field|
           oauth2_option = options[field] || options[field.to_sym]
           next if oauth2_option.nil?
         
