@@ -1,29 +1,13 @@
+require 'signet/oauth_2/client'
+
 module Gaah
   class ApiClient
-    class << self
-      attr_accessor :consumer_key, :consumer_secret, :instance
-
-      def setup_oauth(key, secret)
-        @@consumer_key = key
-        @@consumer_secret = secret
-        true
-      end
-
-      def not_setup?
-        @@consumer_key.nil? || @@consumer_secret.nil?
-      end
-
-      def instance
-        @@instance ||= new
-      end
+    
+    def initialize(access_token)
+      raise 'missing access_token' if access_token.nil?
+      @access_token = access_token
     end
-
-    def initialize
-      raise 'consumer_key and consumer_secret not set' if ApiClient.not_setup?
-      oauth_consumer = OAuth::Consumer.new(@@consumer_key, @@consumer_secret)
-      @token = OAuth::AccessToken.new(oauth_consumer)
-    end
-
+    
     def get(base, query_params = {})
       make_request(:get, base, query_params)
     end
@@ -37,36 +21,67 @@ module Gaah
     end
 
     private
+    
+    def handle_response(uri, response)
+      
+      if response.success?
+        response.body
+      elsif response.status == 302 || response.status == 301
+        url = response.headers['Location']
+        new_uri = URI(url)
+
+        make_request(method, (new_uri.absolute?) ? url : (uri.scheme + "://" + uri.host + url), params, body)
+      elsif response.status == 403
+        raise Gaah::HTTPForbidden
+      elsif response.status == 401
+        raise Gaah::HTTPUnauthorized
+      elsif response.status == 400
+        raise Gaah::HTTPBadRequest
+      else
+        raise Gaah::UnknownHTTPException.new(response.status.to_s)
+      end
+    
+    end
 
     def make_request(method, url, params = {}, body = nil)
       url = "#{url}?#{QueryParams.encode(params)}" if params.keys.length > 0
-      case method
-      when :get
-        response = @token.get(url, 'GData-Version' => '2.0')
-      when :delete
-        response = @token.delete(url, 'GData-Version' => '2.0')
-      when :post
-        response = @token.post(url, body.to_json, 'Content-Type' => 'application/json')
-      else
-        response = @token.request(method, url, 'GData-Version' => '2.0')
-      end
+      uri = URI(url)
+  
+      http_connection = Faraday.new(uri.scheme + "://" + uri.host)
+      headers = { 'Cache-Control' => 'no-store', 'GData-Version' => '2.0', 'Authorization' => ::Signet::OAuth2.generate_bearer_authorization_header( @access_token, nil ) }
 
-      if response.is_a? Net::HTTPSuccess
-        response.body
-      elsif response.is_a? Net::HTTPFound
-        url = response['Location']
-        make_request(method, response['Location'], params, body)
-      elsif response.is_a? Net::HTTPForbidden
-        raise Gaah::HTTPForbidden
-      elsif response.is_a? Net::HTTPUnauthorized
-        raise Gaah::HTTPUnauthorized
-      elsif response.is_a? Net::HTTPBadRequest
-        raise Gaah::HTTPBadRequest
-      elsif response.code.start_with?('2')
-        response
-      else
-        raise Gaah::UnknownHTTPException.new(response.code)
-      end
+      response = case method
+        when :get
+          http_connection.get do |req|
+            req.url url, params
+            req.headers= headers
+          end
+        when :delete
+          conn.delete do |req|
+            req.url url, params
+            req.headers= headers
+          end
+        when :post
+          req.headers['Content-Type'] = 'application/json'
+        
+          conn.post do |req|
+            req.url url, params
+            req.headers= headers
+            req.body = body
+          end
+        when :put
+          req.headers['Content-Type'] = 'application/json'
+        
+          conn.put do |req|
+            req.url url, params
+            req.headers= headers
+            req.body = body
+          end
+        else
+          raise Gaah::UnknownHTTPException.new("Unknown HTTP Method #{method}")
+        end
+
+      handle_response uri, response
     end
   end
 end
