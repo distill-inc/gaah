@@ -1,4 +1,5 @@
 require 'signet/oauth_2/client'
+require 'gaah/exceptions'
 
 module Gaah
   class OAuth
@@ -53,6 +54,8 @@ module Gaah
     def access_code=(access_code)
       @oauth_client.code = access_code
       fetch_access_token!
+    rescue Signet::AuthorizationError => e
+      raise Gaah::HTTPUnauthorized.new(e.message)
     end  
     
     def access_token
@@ -73,6 +76,8 @@ module Gaah
 
     def refresh_access_token!
       @oauth_client.refresh!
+    rescue Signet::AuthorizationError => e
+      raise Gaah::HTTPUnauthorized.new(e.message)
     end
     
     private
