@@ -7,14 +7,17 @@ module Gaah
   module Calendar
     class Api
       class << self
+        
+        CALENDAR_LIST_URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
+        API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
+                
         # API: CalendarList: list
         def calendars(oauth_client, options = {}, retry_interval=0)
-          url = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
           params = {
             minAccessRole:       options[:min_access_role] || 'writer',
             showHidden:          options[:show_hidden]     || false,
           }
-          calendars = JSON.load(ApiClient.new(oauth_client.access_token).get(url, params))
+          calendars = JSON.load(ApiClient.new(oauth_client.access_token).get(CALENDAR_LIST_URL, params))
           Calendar.batch_create(calendars['items'])
         rescue Gaah::HTTPUnauthorized => e
           retry_interval+=1
@@ -125,7 +128,6 @@ module Gaah
           emails.map { |email| { email: email, responseStatus: status } }
         end
 
-        API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
       end
     end
   end
