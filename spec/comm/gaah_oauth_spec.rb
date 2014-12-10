@@ -52,7 +52,7 @@ describe OAuth do
     describe :authorization_uri do
       
       it 'should return an authorization uri for OAuth2 handshake' do
-        oauth.authorization_uri.should == Addressable::URI.parse('https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=123&redirect_uri=http://localhost:3012/oauth&response_type=code&scope=https://apps-apis.google.com/a/feeds/calendar/resource/%20https://www.googleapis.com/auth/admin.directory.user%20https://www.googleapis.com/auth/admin.directory.user.readonly')
+        oauth.authorization_uri.should == Addressable::URI.parse('https://accounts.google.com/o/oauth2/auth?access_type=offline&client_id=123&redirect_uri=http://localhost:3012/oauth&response_type=code&scope=https://apps-apis.google.com/a/feeds/calendar/resource/%20https://www.googleapis.com/auth/calendar%20https://www.googleapis.com/auth/calendar.readonly%20https://www.googleapis.com/auth/admin.directory.user%20https://www.googleapis.com/auth/admin.directory.user.readonly')
       end
       
     end
