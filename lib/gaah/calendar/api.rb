@@ -26,8 +26,6 @@ module Gaah
         end
 
         # API: Events#list
-          url    = build_api_url(options[:email])
-          params = build_events_api_params(xoauth_requestor_id, options)
         def events(oauth_client, options, retry_interval=0)
           modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
           
