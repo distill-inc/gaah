@@ -66,6 +66,10 @@ module Gaah
     def expires_at
       @oauth_client.expires_at
     end
+    
+    def storable_token
+      {"access_token"=>@oauth_client.access_token, "token_type"=>"Bearer", "expires_at"=> (@oauth_client.expires_at ? @oauth_client.expires_at.to_i : nil), "refresh_token"=>@oauth_client.refresh_token} 
+    end
 
     def refresh_access_token!
       @oauth_client.refresh!
