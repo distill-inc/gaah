@@ -9,7 +9,7 @@ module Gaah
       class << self
         
         CALENDAR_LIST_URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
-        API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
+        CALENDAR_API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
                 
         # API: CalendarList: list
         def calendars(oauth_client, options = {}, retry_interval=0)
@@ -26,12 +26,20 @@ module Gaah
         end
 
         # API: Events#list
-        def events(xoauth_requestor_id, options)
           url    = build_api_url(options[:email])
           params = build_events_api_params(xoauth_requestor_id, options)
-          json   = ApiClient.instance.get(url, params)
+        def events(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+          
+          url    = build_api_url(modifiable_options[:email])
+          params = build_events_api_params(modifiable_options)
+          json   = ApiClient.new(oauth_client.access_token).get(url, params)
           events = JSON.load(json)
           Event.batch_create(events['items'])
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
         # API: Events#insert
@@ -74,18 +82,17 @@ module Gaah
         private
 
         def build_api_url(email)
-          API_URL.sub('CAL_ID', email || 'default')
+          CALENDAR_API_URL.sub('CAL_ID', email || 'default')
         end
 
-        def build_events_api_params(xoauth_requestor_id, options)
+        def build_events_api_params(options)
           api_params = {
-            xoauth_requestor_id: xoauth_requestor_id,
             alwaysIncludeEmail: true,
           }
           api_params[:orderBy]      = options.delete(:order_by)      || 'startTime'
           api_params[:singleEvents] = options.delete(:single_events) || true
-          api_params[:timeMin]      = dateify(options.delete(:time_min))
-          api_params[:timeMax]      = dateify(options.delete(:time_max))
+          api_params[:timeMin]      = dateify(options.delete(:time_min))  if options[:time_min]
+          api_params[:timeMax]      = dateify(options.delete(:time_max))  if options[:time_max]
           api_params
         end
 
