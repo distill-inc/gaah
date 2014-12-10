@@ -71,10 +71,6 @@ module Gaah
       @oauth_client.refresh!
     end
     
-    def oauth_client
-      @oauth_client
-    end
-    
     private
     
     def fetch_access_token!
