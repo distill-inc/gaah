@@ -8,15 +8,18 @@ module Gaah
     class Api
       class << self
         # API: CalendarList: list
-        def calendars(xoauth_requestor_id, options = {})
+        def calendars(oauth_client, options = {}, retry_interval=0)
           url = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
           params = {
-            xoauth_requestor_id: xoauth_requestor_id,
             minAccessRole:       options[:min_access_role] || 'writer',
             showHidden:          options[:show_hidden]     || false,
           }
-          calendars = JSON.load(ApiClient.instance.get(url, params))
+          calendars = JSON.load(ApiClient.new(oauth_client.access_token).get(url, params))
           Calendar.batch_create(calendars['items'])
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
         # API: Events#list
