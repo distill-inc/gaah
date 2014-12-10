@@ -50,7 +50,7 @@ module Gaah
     end
 
     # Used to close the handshake with the OAuth2 provider (Google)
-    def access_token=(access_code)
+    def access_code=(access_code)
       @oauth_client.code = access_code
       fetch_access_token!
     end  
