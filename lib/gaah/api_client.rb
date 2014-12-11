@@ -57,25 +57,25 @@ module Gaah
             req.headers= headers
           end
         when :delete
-          conn.delete do |req|
+          http_connection.delete do |req|
             req.url url, params
             req.headers= headers
           end
         when :post
-          req.headers['Content-Type'] = 'application/json'
+          headers['Content-Type'] = 'application/json'
         
-          conn.post do |req|
+          http_connection.post do |req|
             req.url url, params
             req.headers= headers
-            req.body = body
+            req.body = body.to_json
           end
         when :put
-          req.headers['Content-Type'] = 'application/json'
+          headers['Content-Type'] = 'application/json'
         
-          conn.put do |req|
+          http_connection.put do |req|
             req.url url, params
             req.headers= headers
-            req.body = body
+            req.body = body.to_json
           end
         else
           raise Gaah::UnknownHTTPException.new("Unknown HTTP Method #{method}")
