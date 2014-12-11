@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'vcr'
 
 describe Gaah::Calendar::Api do
-  #let(:stored_token) { {"access_token"=>"ya29.YXJIwThKBwwyJGTJTcLnfeNEGiGi3npeffzzVO6JrPKrc6mPpubmD1M2ojt", "token_type"=>"Bearer", "expires_at"=>1418159416, "refresh_token"=>"1/daSrFubmD1Mm3pTBhJb6T0FLaLBZhxggaUdIsXkfL9BiHv"} }
-  let(:stored_token) { {"access_token"=>"ya29.2AAwLxIyYohYixBHRzqMGqqSpTdiS0E8JW10qHIng9PHubFdB1xb7TgVrtVGmSeueg0Rwfu5ghxFIA", "token_type"=>"Bearer", "expires_at"=>1418195046, "refresh_token"=>"1/Z_l9N6J0oUdMtH-jhnC7k4jpqeyR8ybIXqgdhxscxFF90RDknAdJa_sgfheVM0XT" } }
+  let(:stored_token) { {"access_token"=>"ya29.YXJIwThKBwwyJGTJTcLnfeNEGiGi3npeffzzVO6JrPKrc6mPpubmD1M2ojt", "token_type"=>"Bearer", "expires_at"=>1418159416, "refresh_token"=>"1/daSrFubmD1Mm3pTBhJb6T0FLaLBZhxggaUdIsXkfL9BiHv"} }
   let(:oauth)   { Gaah::OAuth.new(stored_token) }
   
   before do
@@ -12,9 +11,7 @@ describe Gaah::Calendar::Api do
       c.hook_into :webmock
     end
     
-    #Gaah::OAuth.setup_oauth2("123", "456", "http://localhost:3012/oauth")
-    Gaah.setup_oauth2('399207994460-m6do93hqo3vsmr80jkui8c5fd2bnjkk9.apps.googleusercontent.com', 'd4rWx9nvmaYiU3HfRWgC6HP3', 'http://localhost:3021/oauth2')
-    
+    Gaah::OAuth.setup_oauth2("123", "456", "http://localhost:3012/oauth")    
   end
 
   describe :calendars do
