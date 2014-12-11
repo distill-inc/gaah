@@ -17,9 +17,9 @@ module Gaah
         @given_name  = entry['name']['givenName']
       end
 
-      def events(xoauth_requestor_id, options = {})
+      def events(oauth_client, options = {})
         options[:email] = @email
-        Gaah::Calendar::Api.events(xoauth_requestor_id, options)
+        Gaah::Calendar::Api.events(oauth_client, options)
       end
 
       def to_json(*args)
