@@ -1,0 +1,188 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/calendars/bob@gild.com/events/snvqik8vfm9mqg5kt93e3je0ng
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Gdata-Version:
+      - '2.0'
+      Authorization:
+      - Bearer ya29.2AAwLxIyYohYixBHRzqMGqqSpTdiS0E8JW10qHIng9PHubFdB1xb7TgVrtVGmSeueg0Rwfu5ghxFIA
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Vary:
+      - Origin
+      - X-Origin
+      Www-Authenticate:
+      - Bearer realm="https://accounts.google.com/AuthSubRequest", error=invalid_token
+      Content-Type:
+      - application/json; charset=UTF-8
+      Content-Encoding:
+      - gzip
+      Date:
+      - Thu, 11 Dec 2014 01:46:43 GMT
+      Expires:
+      - Thu, 11 Dec 2014 01:46:43 GMT
+      Cache-Control:
+      - private, max-age=0
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic,p=0.02
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        H4sIAAAAAAAAAIWNMQ7CMAxF95wiyswAElM3hBjY2RCD21itpTRGTkCCqnfH
+        ScvCwmLpv/dtT8Y6FGFxjZ2MXUPSdNVUkULPI1BU6PrALQS3WbggJK4cHnk4
+        1TurGjEl6LG4c3xCIG+Pgh5jJgjp2wrcQSaOl9e9VgcEj/JriznoAxZ6L6D4
+        WcetNF3Hvmzvt7sa/7w2ujmbDxACsu/5AAAA
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 01:46:43 GMT
+- request:
+    method: post
+    uri: https://accounts.google.com/o/oauth2/token
+    body:
+      encoding: ASCII-8BIT
+      string: !binary |-
+        Z3JhbnRfdHlwZT1yZWZyZXNoX3Rva2VuJnJlZnJlc2hfdG9rZW49MSUyRlpf
+        bDlONkowb1VkTXRILWpobkM3azRqcHFleVI4eWJJWHFnZGh4c2N4RkY5MFJE
+        a25BZEphX3NnZmhlVk0wWFQmY2xpZW50X2lkPTM5OTIwNzk5NDQ2MC1tNmRv
+        OTNocW8zdnNtcjgwamt1aThjNWZkMmJuamtrOS5hcHBzLmdvb2dsZXVzZXJj
+        b250ZW50LmNvbSZjbGllbnRfc2VjcmV0PWQ0cld4OW52bWFZaVUzSGZSV2dD
+        NkhQMw==
+    headers:
+      Cache-Control:
+      - no-store
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache, no-store, max-age=0, must-revalidate
+      Pragma:
+      - no-cache
+      Expires:
+      - Fri, 01 Jan 1990 00:00:00 GMT
+      Date:
+      - Thu, 11 Dec 2014 01:46:43 GMT
+      Content-Disposition:
+      - attachment; filename="json.txt"; filename*=UTF-8''json.txt
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic,p=0.02
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: US-ASCII
+      string: ! "{\n  \"access_token\" : \"ya29.2QBim2hKkUqd5Q2yIrcEVm_hDs2aUTZG2GDAbmAVV2uzH7nN8HXOMa49NYG9s_QxmYBboXj9ZEWcLw\",\n
+        \ \"token_type\" : \"Bearer\",\n  \"expires_in\" : 3600\n}"
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 01:46:43 GMT
+- request:
+    method: get
+    uri: https://www.googleapis.com/calendar/v3/calendars/bob@gild.com/events/snvqik8vfm9mqg5kt93e3je0ng
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Cache-Control:
+      - no-store
+      Gdata-Version:
+      - '2.0'
+      Authorization:
+      - Bearer ya29.2QBim2hKkUqd5Q2yIrcEVm_hDs2aUTZG2GDAbmAVV2uzH7nN8HXOMa49NYG9s_QxmYBboXj9ZEWcLw
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - ! '*/*'
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Expires:
+      - Thu, 11 Dec 2014 01:46:43 GMT
+      Date:
+      - Thu, 11 Dec 2014 01:46:43 GMT
+      Cache-Control:
+      - private, max-age=0, must-revalidate, no-transform
+      Etag:
+      - ! '"2836522931188000"'
+      Vary:
+      - Origin
+      - X-Origin
+      Content-Type:
+      - application/json; charset=UTF-8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1239'
+      Server:
+      - GSE
+      Alternate-Protocol:
+      - 443:quic,p=0.02
+    body:
+      encoding: US-ASCII
+      string: ! "{\n \"kind\": \"calendar#event\",\n \"etag\": \"\\\"2836522931188000\\\"\",\n
+        \"id\": \"snvqik8vfm9mqg5kt93e3je0ng\",\n \"status\": \"confirmed\",\n \"htmlLink\":
+        \"https://www.google.com/calendar/event?eid=c252cWlrOHZmbTltcWc1a3Q5M2UzamUwbmcgbHVjYUBnaWxkLmNvbQ\",\n
+        \"created\": \"2014-12-11T01:26:30.000Z\",\n \"updated\": \"2014-12-11T01:31:05.594Z\",\n
+        \"summary\": \"Meeting with Batman\",\n \"description\": \"Fight the crime\",\n
+        \"creator\": {\n  \"email\": \"bob@gild.com\",\n  \"displayName\": \"Luca
+        Bonmassar\",\n  \"self\": true\n },\n \"organizer\": {\n  \"email\": \"bob@gild.com\",\n
+        \ \"displayName\": \"John Doe\",\n  \"self\": true\n },\n \"start\":
+        {\n  \"dateTime\": \"2014-12-10T15:00:00-08:00\"\n },\n \"end\": {\n  \"dateTime\":
+        \"2014-12-10T16:30:00-08:00\"\n },\n \"iCalUID\": \"snvqik8vfm9mqg5kt93e3je0ng@google.com\",\n
+        \"sequence\": 0,\n \"attendees\": [\n  {\n   \"email\": \"gild.com_2d32333339303634362d333933@resource.calendar.google.com\",\n
+        \  \"displayName\": \"Camping\",\n   \"resource\": true,\n   \"responseStatus\":
+        \"accepted\"\n  },\n  {\n   \"email\": \"pam@gild.com\",\n   \"displayName\":
+        \"Pippo Pluto\",\n   \"responseStatus\": \"accepted\"\n  }\n ],\n \"hangoutLink\":
+        \"https://plus.google.com/hangouts/_/gild.com/francesco-luca?hceid=bHVjYUBnaWxkLmNvbQ.snvqik8vfm9mqg5kt93e3je0ng\",\n
+        \"reminders\": {\n  \"useDefault\": true\n }\n}\n"
+    http_version: 
+  recorded_at: Thu, 11 Dec 2014 01:46:43 GMT
+recorded_with: VCR 2.9.3
