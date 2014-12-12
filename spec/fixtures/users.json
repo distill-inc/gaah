@@ -1,0 +1,60 @@
+{
+ "etag": "\"16D6JySr2ja3om9wXLZ0Y3KEeUo/t-Iepd3qiym6YbvjjaUG2mglc_4\"",
+ "users": [
+  {
+   "id": "123823548234723423423",
+   "primaryEmail": "boom@gild.com",
+   "name": {
+    "givenName": "Boom",
+    "familyName": "Bastic",
+    "fullName": "Boom Bastic"
+   },
+   "isAdmin": false,
+   "isDelegatedAdmin": false,
+   "suspended": false,
+   "emails": [
+    {
+     "address": "boom@gild.com",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "id": "982385438458324582348",
+   "primaryEmail": "meh@gild.com",
+   "name": {
+    "givenName": "Meh",
+    "familyName": "Gusta",
+    "fullName": "Meh Gusta"
+   },
+   "isAdmin": true,
+   "isDelegatedAdmin": false,
+   "suspended": false,
+   "emails": [
+    {
+     "address": "meh@gild.com",
+     "primary": true
+    }
+   ]
+  },
+  {
+   "id": "757348292712388577362",
+   "primaryEmail": "moo@gild.com",
+   "name": {
+    "givenName": "Moo",
+    "familyName": "Fox",
+    "fullName": "Moo Fox"
+   },
+   "isAdmin": false,
+   "isDelegatedAdmin": false,
+   "suspended": true,
+   "emails": [
+    {
+     "address": "moo@gild.com",
+     "primary": true
+    }
+   ]
+  }
+ ],
+ "nextPageToken": "0a2bf7fece4e46fffffffff5f288969393b798969d9bd19c3092ff0efeffffcbcdcdcbcfcec8cdcbc6d9cbfffe104411522238059278d9113900000000a9b13501470150005a0b09591e28226b9c7b891001"
+}

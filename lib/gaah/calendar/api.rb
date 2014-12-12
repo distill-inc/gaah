@@ -7,55 +7,85 @@ module Gaah
   module Calendar
     class Api
       class << self
+        
+        CALENDAR_LIST_URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
+        CALENDAR_API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
+                
         # API: CalendarList: list
-        def calendars(xoauth_requestor_id, options = {})
-          url = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
+        def calendars(oauth_client, options = {}, retry_interval=0)
           params = {
-            xoauth_requestor_id: xoauth_requestor_id,
             minAccessRole:       options[:min_access_role] || 'writer',
             showHidden:          options[:show_hidden]     || false,
           }
-          calendars = JSON.load(ApiClient.instance.get(url, params))
+          calendars = JSON.load(ApiClient.new(oauth_client.access_token).get(CALENDAR_LIST_URL, params))
           Calendar.batch_create(calendars['items'])
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
         # API: Events#list
-        def events(xoauth_requestor_id, options)
-          url    = build_api_url(options[:email])
-          params = build_events_api_params(xoauth_requestor_id, options)
-          json   = ApiClient.instance.get(url, params)
+        def events(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+          
+          url    = build_api_url(modifiable_options[:email])
+          params = build_events_api_params(modifiable_options)
+          json   = ApiClient.new(oauth_client.access_token).get(url, params)
           events = JSON.load(json)
           Event.batch_create(events['items'])
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
         # API: Events#insert
-        def create_event(xoauth_requestor_id, options)
-          url    = build_api_url(options.delete(:email))
-          params = { xoauth_requestor_id: xoauth_requestor_id }
-          body   = build_create_api_body(options)
-          json   = ApiClient.instance.post(url, params, body)
+        def create_event(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+          
+          url    = build_api_url(modifiable_options.delete(:email))
+          params = {}
+          body   = build_create_api_body(modifiable_options)
+          json   = ApiClient.new(oauth_client.access_token).post(url, params, body)
 
           Gaah::Calendar::Event.new(JSON.load(json))
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
         # API: Events#get
-        def event(xoauth_requestor_id, options)
-          base   = build_api_url(options.delete(:email))
-          id     = options.delete(:event_id)
+        def event(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+          
+          base   = build_api_url(modifiable_options.delete(:email))
+          id     = modifiable_options.delete(:event_id)
           url    = "#{base}/#{id}"
-          params = { xoauth_requestor_id: xoauth_requestor_id }
-          json   = ApiClient.instance.get(url, params)
+          params = {}
+          json   = ApiClient.new(oauth_client.access_token).get(url, params)
 
           Gaah::Calendar::Event.new(JSON.load(json))
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         end
 
-        def delete_event(xoauth_requestor_id, options)
-          base   = build_api_url(options.delete(:email))
-          id     = options.delete(:event_id)
+        def delete_event(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+          
+          base   = build_api_url(modifiable_options.delete(:email))
+          id     = modifiable_options.delete(:event_id)
           url    = "#{base}/#{id}"
-          params = { xoauth_requestor_id: xoauth_requestor_id }
-          ApiClient.instance.delete(url, params)
+          params = { }
+          ApiClient.new(oauth_client.access_token).delete(url, params)
           { success: true }
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
         rescue Gaah::UnknownHTTPException => exception
           case exception.message
           when '404'
@@ -68,18 +98,17 @@ module Gaah
         private
 
         def build_api_url(email)
-          API_URL.sub('CAL_ID', email || 'default')
+          CALENDAR_API_URL.sub('CAL_ID', email || 'default')
         end
 
-        def build_events_api_params(xoauth_requestor_id, options)
+        def build_events_api_params(options)
           api_params = {
-            xoauth_requestor_id: xoauth_requestor_id,
             alwaysIncludeEmail: true,
           }
           api_params[:orderBy]      = options.delete(:order_by)      || 'startTime'
           api_params[:singleEvents] = options.delete(:single_events) || true
-          api_params[:timeMin]      = dateify(options.delete(:time_min))
-          api_params[:timeMax]      = dateify(options.delete(:time_max))
+          api_params[:timeMin]      = dateify(options.delete(:time_min))  if options[:time_min]
+          api_params[:timeMax]      = dateify(options.delete(:time_max))  if options[:time_max]
           api_params
         end
 
@@ -122,7 +151,6 @@ module Gaah
           emails.map { |email| { email: email, responseStatus: status } }
         end
 
-        API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
       end
     end
   end
