@@ -7,14 +7,20 @@ module Gaah
         # Meta
         @id        = entry['id']
         @email     = entry['primaryEmail']
+        
+        if @email.nil? && entry['emails'] && entry['emails'].count > 0
+          @email = entry['emails'].first['address']
+          @email ||= entry['emails'].first['value']
+        end
+        
         @suspended = entry['suspended']
         @admin     = entry['isAdmin']
 
         # Name
         @user_name   = @email
-        @name        = entry['name']['fullName']
         @family_name = entry['name']['familyName']
         @given_name  = entry['name']['givenName']
+        @name        = entry['name']['fullName'] || "#{@given_name} #{@family_name}"
       end
 
       def events(oauth_client, options = {})
