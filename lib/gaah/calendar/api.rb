@@ -7,10 +7,10 @@ module Gaah
   module Calendar
     class Api
       class << self
-        
+
         CALENDAR_LIST_URL = "https://www.googleapis.com/calendar/v3/users/me/calendarList"
         CALENDAR_API_URL = 'https://www.googleapis.com/calendar/v3/calendars/CAL_ID/events'
-                
+
         # API: CalendarList: list
         def calendars(oauth_client, options = {}, retry_interval=0)
           params = {
@@ -28,7 +28,7 @@ module Gaah
         # API: Events#list
         def events(oauth_client, options, retry_interval=0)
           modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
-          
+
           url    = build_api_url(modifiable_options[:email])
           params = build_events_api_params(modifiable_options)
           json   = ApiClient.new(oauth_client.access_token).get(url, params)
@@ -43,7 +43,7 @@ module Gaah
         # API: Events#insert
         def create_event(oauth_client, options, retry_interval=0)
           modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
-          
+
           url    = build_api_url(modifiable_options.delete(:email))
           params = {}
           body   = build_create_api_body(modifiable_options)
@@ -59,7 +59,7 @@ module Gaah
         # API: Events#get
         def event(oauth_client, options, retry_interval=0)
           modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
-          
+
           base   = build_api_url(modifiable_options.delete(:email))
           id     = modifiable_options.delete(:event_id)
           url    = "#{base}/#{id}"
@@ -75,7 +75,7 @@ module Gaah
 
         def delete_event(oauth_client, options, retry_interval=0)
           modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
-          
+
           base   = build_api_url(modifiable_options.delete(:email))
           id     = modifiable_options.delete(:event_id)
           url    = "#{base}/#{id}"
@@ -129,6 +129,7 @@ module Gaah
           end_time    = { dateTime: options.delete(:end_time  ).xmlschema }
           summary     = options.delete(:summary)
           description = options.delete(:description)
+          location    = options.delete(:location)
 
           attendees =
             attendeeify(options.delete(:participants), 'needsAction') +
@@ -139,6 +140,7 @@ module Gaah
           body[:summary]     = summary     unless summary.nil?
           body[:description] = description unless description.nil?
           body[:attendees]   = attendees   unless attendees.empty?
+          body[:location]    = location    unless location.empty?
           body
         end
 
