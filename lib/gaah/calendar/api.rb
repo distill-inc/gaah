@@ -140,7 +140,7 @@ module Gaah
           body[:summary]     = summary     unless summary.nil?
           body[:description] = description unless description.nil?
           body[:attendees]   = attendees   unless attendees.empty?
-          body[:location]    = location    unless location.empty?
+          body[:location]    = location    unless location.nil?
           body
         end
 
