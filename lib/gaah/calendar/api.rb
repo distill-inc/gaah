@@ -46,8 +46,26 @@ module Gaah
 
           url    = build_api_url(modifiable_options.delete(:email))
           params = {}
+          params[:sendNotifications] = true if modifiable_options.delete(:send_invite)
           body   = build_create_api_body(modifiable_options)
           json   = ApiClient.new(oauth_client.access_token).post(url, params, body)
+
+          Gaah::Calendar::Event.new(JSON.load(json))
+        rescue Gaah::HTTPUnauthorized => e
+          retry_interval+=1
+          retry if retry_interval <= 3 && oauth_client.refresh_access_token!
+          raise e
+        end
+
+        # API: Events#update
+        def update_event(oauth_client, options, retry_interval=0)
+          modifiable_options = options.dup  #build_events_api_params modifies options, giving side effects for retry
+
+          url    = build_api_url(modifiable_options.delete(:email)) + "/#{modifiable_options.delete(:id)}"
+          params = {}
+          params[:sendNotifications] = true if modifiable_options.delete(:send_invite)
+          body   = build_create_api_body(modifiable_options)
+          json   = ApiClient.new(oauth_client.access_token).put(url, params, body)
 
           Gaah::Calendar::Event.new(JSON.load(json))
         rescue Gaah::HTTPUnauthorized => e
@@ -130,6 +148,7 @@ module Gaah
           summary     = options.delete(:summary)
           description = options.delete(:description)
           location    = options.delete(:location)
+          send_invite = options.delete(:send_invite)
 
           attendees =
             attendeeify(options.delete(:participants), 'needsAction') +
