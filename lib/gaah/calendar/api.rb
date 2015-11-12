@@ -46,7 +46,7 @@ module Gaah
 
           url    = build_api_url(modifiable_options.delete(:email))
           params = {}
-          params[:sendNotifications] = true if modifiable_options.delete(:send_invite)
+          params[:sendNotifications] = true if modifiable_options.delete(:send_notifications)
           body   = build_create_api_body(modifiable_options)
           json   = ApiClient.new(oauth_client.access_token).post(url, params, body)
 
@@ -63,7 +63,7 @@ module Gaah
 
           url    = build_api_url(modifiable_options.delete(:email)) + "/#{modifiable_options.delete(:id)}"
           params = {}
-          params[:sendNotifications] = true if modifiable_options.delete(:send_invite)
+          params[:sendNotifications] = true if modifiable_options.delete(:send_notifications)
           body   = build_create_api_body(modifiable_options)
           json   = ApiClient.new(oauth_client.access_token).put(url, params, body)
 
@@ -98,7 +98,7 @@ module Gaah
           id     = modifiable_options.delete(:event_id)
           url    = "#{base}/#{id}"
           params = {}
-          params[:sendNotifications] = true if modifiable_options.delete(:send_invite)
+          params[:sendNotifications] = true if modifiable_options.delete(:send_notifications)
 
           ApiClient.new(oauth_client.access_token).delete(url, params)
           { success: true }
