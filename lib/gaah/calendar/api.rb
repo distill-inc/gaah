@@ -150,7 +150,6 @@ module Gaah
           summary     = options.delete(:summary)
           description = options.delete(:description)
           location    = options.delete(:location)
-          send_invite = options.delete(:send_invite)
 
           attendees =
             attendeeify(options.delete(:participants), 'needsAction') +
